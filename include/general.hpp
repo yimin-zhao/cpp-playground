@@ -3,21 +3,29 @@
 
 #include <algorithm>
 #include <chrono>
-#include <cstdio>
-#include <cstdlib>
+#include <numeric>
+#include <memory>
+
+#include <string>
 #include <filesystem>
+#include <sstream>
 #include <fstream>
 #include <iostream>
+
 #include <map>
 #include <set>
-#include <sstream>
-#include <string>
+#include <queue>
 #include <tuple>
 #include <vector>
+
 #include <climits>
-#include <unistd.h>
+#include <cstring>
 #include <cmath>
-#include <numeric>
+#include <cstdio>
+#include <cstdlib>
+
+#include <unistd.h>
+
 using namespace std;
 using namespace std::chrono;
 
@@ -34,6 +42,8 @@ typedef unsigned long long ull;
 const int mod = 1e9 + 7;
 const int MAX_K = 1e5;
 const int MAX_N = 1e5;
+const int MAX_E = 1e5;
+const int MAX_V = 1e5;
 
 const int prime1 = 9973;  // 1e5 - 27
 const int prime2 = 19260817;
@@ -42,6 +52,11 @@ const int prime3 = 99999989;  // 1e8 - 11
 /*
  * Basic structure definitions
  */
+
+struct Edge {
+  int from, to, cost;
+};
+
 struct ListNode {
   int val;
   ListNode* next;
@@ -163,6 +178,28 @@ ostream& operator<<(ostream& os, const vector<vector<T>>& vec) {
   os << "V" << endl;
   return os;
 }
+
+/*
+ *  Utility Class
+ */
+class UnionFind {
+public:
+  UnionFind(int v) {
+    vec.assign(v, -1);
+  }
+
+  bool Same(int u, int v) {
+    while (vec[u] != v)
+      vec[u] = v;
+    return vec[u] = v;
+  }
+
+  void Unite(int u, int v) {
+    vec[v] = vec[u];
+  }
+private:
+  vector<int> vec;
+};
 
 /*
  * Macros definition

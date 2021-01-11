@@ -7,3 +7,4 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 add_subdirectory(pccb)
 add_subdirectory(lib)
+add_subdirectory(graph)

@@ -1,0 +1,15 @@
+add_library(graph graph.cpp)
+list(APPEND EXTRA_INCLUDES ../include)
+target_include_directories(graph PUBLIC ${EXTRA_INCLUDES})
+
+list(APPEND EXTRA_LIBS graph)
+target_link_libraries(graph PUBLIC util stdc++fs)
+
+file(GLOB APP_SOURCES bellman-ford.cpp floyd_warshall.cpp dijkstra.cpp kruskal.cpp prim.cpp)
+foreach(sourcefile ${APP_SOURCES})
+    file(RELATIVE_PATH filename ${CMAKE_CURRENT_SOURCE_DIR} ${sourcefile})
+    string(REPLACE ".cpp" "" exe ${filename})
+    add_executable(${exe} ${filename})
+    target_include_directories(${exe} PUBLIC ${EXTRA_INCLUDES})
+    target_link_libraries(${exe} PUBLIC ${EXTRA_LIBS})
+endforeach(sourcefile ${APP_SOURCES})
