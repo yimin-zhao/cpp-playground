@@ -110,3 +110,24 @@ int Kruskal(vector<Edge> &es, int E, int V) {
   }
   return res;
 }
+
+int Prim(vector<vector<int>> &cost, int V, int E) {
+  vector<int> mincost(V, INT_MAX);
+  vector<int> used(V, false);
+  mincost[0] = 0;
+  int res = 0;
+
+  while (true) {
+    int v = -1;
+    for (int u = 0; u < v; u++)
+      if (!used[u] && (v == -1 || mincost[u] < mincost[v]))
+        v = u;
+
+    if (v == -1) break;
+    used[v] = true;
+    res += mincost[v];
+    for (int u = 0; u < v; u++)
+      mincost[u] = min(mincost[u], cost[v][u]);
+  }
+  return res;
+}
