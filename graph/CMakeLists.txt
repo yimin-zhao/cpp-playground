@@ -1,9 +1,6 @@
-add_library(graph graph.cpp)
 list(APPEND EXTRA_INCLUDES ../include)
-target_include_directories(graph PUBLIC ${EXTRA_INCLUDES})
+list(APPEND EXTRA_LIBS util stdc++fs)
 
-list(APPEND EXTRA_LIBS graph)
-target_link_libraries(graph PUBLIC util stdc++fs)
 
 file(GLOB APP_SOURCES bellman-ford.cpp floyd_warshall.cpp dijkstra.cpp kruskal.cpp prim.cpp)
 foreach(sourcefile ${APP_SOURCES})
