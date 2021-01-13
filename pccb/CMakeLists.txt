@@ -2,6 +2,7 @@ list(APPEND EXTRA_LIBS util stdc++fs)
 list(APPEND EXTRA_INCLUDES ../include)
 
 file(GLOB APP_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/*.cpp)
+list(FILTER APP_SOURCES INCLUDE REGEX "${CMAKE_CURRENT_SOURCE_DIR}/[A-Z]+")
 foreach(sourcefile ${APP_SOURCES})
     file(RELATIVE_PATH filename ${CMAKE_CURRENT_SOURCE_DIR} ${sourcefile})
     string(REPLACE ".cpp" "" exe ${filename})
