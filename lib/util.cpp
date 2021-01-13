@@ -123,9 +123,8 @@ void showResourceUsage() {
 }
 
 ifstream GetDataStream(const char* source) {
-  fs::path s(source);
-  ifstream infile(s.parent_path().string() + "/testcase/" + s.stem().string() +
-                  ".txt");
+  fs::path s(fs::current_path().string() + "/build/" + source);
+  ifstream infile(s.parent_path().string() + "/" + s.stem().string() + ".txt");
   return infile;
 }
 
