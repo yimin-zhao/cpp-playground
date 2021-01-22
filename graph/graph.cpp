@@ -1,4 +1,5 @@
 #include "graph.hpp"
+#include "data_struct.hpp"
 
 vector<int> BellmanFord(vector<Edge> &es, int s, int V, int E) {
   vector<int> dist(V, INT_MAX);
